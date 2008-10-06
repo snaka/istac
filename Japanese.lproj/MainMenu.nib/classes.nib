@@ -1,0 +1,27 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {alignLeft = id; alignRight = id; openPreferences = id; registBook = id; }; 
+            CLASS = AppController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                bookMsg = id; 
+                detailURL = id; 
+                image = id; 
+                indicator = id; 
+                isbn = id; 
+                message = id; 
+                publication = id; 
+                reqStatus = id; 
+                result = id; 
+                status = id; 
+                title = id; 
+                window = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }
+    ); 
+    IBVersion = 1; 
+}
