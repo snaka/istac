@@ -153,7 +153,8 @@ class AppController < OSX::NSObject
     @indicator.startAnimation(self)
     
     # Request to Stack Stock Books
-    request = "[{asin: \"#{isbn}\", state: \"#{self.selected_state}\"}]"
+    request = "[{\"asin\": \"#{isbn}\", \"state\": \"#{self.selected_state}\"}]"
+    puts request
 
     body = {}
     

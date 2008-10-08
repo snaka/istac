@@ -2,7 +2,7 @@
 #  rb_main.rb
 #  SimpleSSBClient
 #
-#  Created by ?? ?? on 08/09/27.
+#  Created by snaka on 08/09/27.
 #  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
 #
 
