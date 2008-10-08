@@ -37,8 +37,6 @@ class AppController < OSX::NSObject
 
   def initialize
     @screen = OSX::NSScreen.mainScreen.frame.size
-    # APIトークン
-    @token = "jSorTLN8Qi3yuS30"
   end
   
   # user defaults
