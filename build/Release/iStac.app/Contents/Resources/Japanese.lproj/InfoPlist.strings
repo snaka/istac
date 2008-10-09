@@ -1,5 +1,0 @@
-/* Localized versions of Info.plist keys */
-
-CFBundleName = "iStac";
-CFBundleGetInfoString = "iStac version 0.8, Copyright 2008 snaka.";
-NSHumanReadableCopyright = "Copyright 2008 snaka.";
