@@ -1,6 +1,6 @@
 #
 #  PreferenceController.rb
-#  iSSBClient
+#  iStac
 #
 #  Created by snaka on 08/10/05.
 #  Copyright (c) 2008 __MyCompanyName__. All rights reserved.

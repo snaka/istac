@@ -1,6 +1,6 @@
 //
 //  main.m
-//  SimpleSSBClient
+//  iStac
 //
 //  Created by ?? ?? on 08/09/27.
 //  Copyright (c) 2008 __MyCompanyName__. All rights reserved.

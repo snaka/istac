@@ -1,6 +1,6 @@
 #
 #  AppController.rb
-#  SimpleSSBClient
+#  iStac
 #
 #  Created by snaka on 08/09/28.
 #  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
