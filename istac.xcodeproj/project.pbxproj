@@ -48,7 +48,7 @@
 		B60E5AB30E8F8D4D008ECBE0 /* isbn_conv.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = isbn_conv.rb; sourceTree = "<group>"; };
 		B60E5BEF0E8FDB58008ECBE0 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		B635D46B0E8E846500828EDB /* AppController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AppController.rb; sourceTree = "<group>"; };
-		B635D4700E8E8B6500828EDB /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
+		B635D4700E8E8B6500828EDB /* RubyCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = RubyCocoa.framework; path = ../../../../../Library/Frameworks/RubyCocoa.framework; sourceTree = "<group>"; };
 		B69AFAE20E9885080076F279 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		B69AFAF10E988A950076F279 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B6AAC63B0E988F5F00A0791D /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/Preferences.nib; sourceTree = "<group>"; };

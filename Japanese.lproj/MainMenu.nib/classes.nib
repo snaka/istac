@@ -1,7 +1,13 @@
 {
     IBClasses = (
         {
-            ACTIONS = {alignLeft = id; alignRight = id; openPreferences = id; registBook = id; }; 
+            ACTIONS = {
+                alignLeft = id; 
+                alignRight = id; 
+                openPreferences = id; 
+                performRegistration = id; 
+                registBook = id; 
+            }; 
             CLASS = AppController; 
             LANGUAGE = ObjC; 
             OUTLETS = {

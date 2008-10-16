@@ -70,8 +70,16 @@ class AppController < OSX::NSObject
     return true if self.user_id == INITIAL_USER || self.api_token == INITIAL_TOKEN
     false
   end
+  
+  # register button
+  def performRegistration(sender)
+    ret = self.gotBarcode(@isbn.stringValue)
+    puts "performRegistration: #{ret}"
+  end
+  ib_action :performRegistration
 
   # MyBarcodeScanner delegate method
+  objc_method :gotBarcode, [:BOOL, :id]
   def gotBarcode(barcode)
     puts "*** barcode: #{barcode.to_s}"
     
@@ -82,29 +90,19 @@ class AppController < OSX::NSObject
       rescue ArgumentError => ex
         puts "*** invalid barcode or scanning failure."
         puts ex
-        return nil
+        return false
       end
     end
     
     if asin.length != 10 
       puts "*** Invalid ASIN's digit length expected 10 but was #{asin.length}."
-      return nil
+      return false
     end
     
     puts "*** asin: #{asin}"
     @isbn.setStringValue(asin)
     return regist(asin)
   end
-  
-  # Regist button action
-  def registBook(sender)
-    puts ">>> registBook"
-    
-    isbn = @isbn.stringValue
-    puts "isbn:#{isbn}"
-    regist(isbn)
-  end
-  ib_action :registBook
   
   # Menu action
   def openPreferences(sender)
@@ -146,7 +144,7 @@ class AppController < OSX::NSObject
     # check 
     unless isbn.length == 10
       puts "*** ERROR: ISBN's digit must be 10."
-      return nil
+      return false
     end
 
     clear_result
@@ -173,7 +171,7 @@ class AppController < OSX::NSObject
     unless body["success"] == true
       puts "*** Error response."
       @message.setStringValue("Failed to registration.")
-      return nil
+      return false
     end
 
     bookResult = body["response"][0]
@@ -182,7 +180,7 @@ class AppController < OSX::NSObject
       puts "*** Registering '#{@isbn.stringValue}' was failed."
       @bookMsg.setStringValue(bookResult["message"])
       @message.setStringValue(body["message"])
-      return nil
+      return false
     end
     
     # Display result
@@ -222,5 +220,4 @@ class AppController < OSX::NSObject
       NKF.nkf("-W16B -w80", chars.scan(/\\u([A-Fa-f0-9]{4})/).map { |char,| char.hex }.pack("n*"))
     }
   end
-  
 end

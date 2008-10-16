@@ -404,7 +404,8 @@ bail:
 	// lastBarcode is reset to nil when calling scanBarcode
 	if (lastBarcode == nil || ![lastBarcode isEqualToString:aBarcode]) {
 		[[NSSound soundNamed:@"Morse"] play];	
-		if ([delegate gotBarcode:aBarcode]) {
+    BOOL result = [delegate gotBarcode:aBarcode];
+		if (result) {
       NSLog(@">> gotBarcode: succeed");
       [[NSSound soundNamed:@"Hero"] play];	
     }
