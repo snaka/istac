@@ -1,33 +1,75 @@
-{
-    IBClasses = (
-        {
-            ACTIONS = {
-                alignLeft = id; 
-                alignRight = id; 
-                openPreferences = id; 
-                performRegistration = id; 
-                registBook = id; 
-            }; 
-            CLASS = AppController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                bookMsg = id; 
-                detailURL = id; 
-                image = id; 
-                indicator = id; 
-                isbn = id; 
-                message = id; 
-                publication = id; 
-                reqStatus = id; 
-                result = id; 
-                status = id; 
-                title = id; 
-                window = id; 
-            }; 
-            SUPERCLASS = NSObject; 
-        }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }
-    ); 
-    IBVersion = 1; 
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IBClasses</key>
+	<array>
+		<dict>
+			<key>CLASS</key>
+			<string>FirstResponder</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>NSObject</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>alignLeft</key>
+				<string>id</string>
+				<key>alignRight</key>
+				<string>id</string>
+				<key>openHome</key>
+				<string>id</string>
+				<key>openPreferences</key>
+				<string>id</string>
+				<key>performRegistration</key>
+				<string>id</string>
+				<key>registBook</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>AppController</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>bookMsg</key>
+				<string>id</string>
+				<key>detailURL</key>
+				<string>id</string>
+				<key>image</key>
+				<string>id</string>
+				<key>indicator</key>
+				<string>id</string>
+				<key>isbn</key>
+				<string>id</string>
+				<key>message</key>
+				<string>id</string>
+				<key>publication</key>
+				<string>id</string>
+				<key>reqStatus</key>
+				<string>id</string>
+				<key>result</key>
+				<string>id</string>
+				<key>status</key>
+				<string>id</string>
+				<key>title</key>
+				<string>id</string>
+				<key>window</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+	</array>
+	<key>IBVersion</key>
+	<string>1</string>
+</dict>
+</plist>

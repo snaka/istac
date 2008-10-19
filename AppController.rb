@@ -6,9 +6,10 @@
 #  Copyright (c) 2008 __MyCompanyName__. All rights reserved.
 #
 require 'pp'
-require 'yaml'
 require 'net/http'
 
+require 'rubygems'
+require 'json'
 require 'osx/cocoa'
 
 require 'isbn_conv'
@@ -71,6 +72,15 @@ class AppController < OSX::NSObject
     false
   end
   
+  #--- ACTIONS ---------------------------------------------------
+  # open home button
+  def openHome(sender)
+    puts "openHome:"
+    url = OSX::NSURL.URLWithString("http://stack.nayutaya.jp/user/#{self.user_id}")
+    OSX::NSWorkspace.sharedWorkspace.openURL(url) 
+  end
+  ib_action :openHome
+  
   # register button
   def performRegistration(sender)
     ret = self.gotBarcode(@isbn.stringValue)
@@ -78,32 +88,6 @@ class AppController < OSX::NSObject
   end
   ib_action :performRegistration
 
-  # MyBarcodeScanner delegate method
-  objc_method :gotBarcode, [:BOOL, :id]
-  def gotBarcode(barcode)
-    puts "*** barcode: #{barcode.to_s}"
-    
-    asin = barcode.to_s
-    if asin.length > 10 
-      begin
-        asin = conv_isbn13to10(asin)
-      rescue ArgumentError => ex
-        puts "*** invalid barcode or scanning failure."
-        puts ex
-        return false
-      end
-    end
-    
-    if asin.length != 10 
-      puts "*** Invalid ASIN's digit length expected 10 but was #{asin.length}."
-      return false
-    end
-    
-    puts "*** asin: #{asin}"
-    @isbn.setStringValue(asin)
-    return regist(asin)
-  end
-  
   # Menu action
   def openPreferences(sender)
     if @preferenceController.nil? then
@@ -139,6 +123,34 @@ class AppController < OSX::NSObject
   end
   ib_action :alignLeft
 
+  #--- DELEGATE --------------------------------------------------
+  # MyBarcodeScanner delegate method
+  objc_method :gotBarcode, [:BOOL, :id]
+  def gotBarcode(barcode)
+    puts "*** barcode: #{barcode.to_s}"
+    
+    asin = barcode.to_s
+    if asin.length > 10 
+      begin
+        asin = conv_isbn13to10(asin)
+      rescue ArgumentError => ex
+        puts "*** invalid barcode or scanning failure."
+        puts ex
+        return false
+      end
+    end
+    
+    if asin.length != 10 
+      puts "*** Invalid ASIN's digit length expected 10 but was #{asin.length}."
+      return false
+    end
+    
+    puts "*** asin: #{asin}"
+    @isbn.setStringValue(asin)
+    return regist(asin)
+  end
+  
+  #--- PRIVATE ---------------------------------------------------
   # Call API to regist book 
   def regist(isbn)
     # check 
@@ -159,10 +171,11 @@ class AppController < OSX::NSObject
     Net::HTTP.version_1_2
     Net::HTTP.start("stack.nayutaya.jp", 80) do |http|
       uri      = "/api/#{self.user_id}/#{self.api_token}/stocks/update.1"
-      pp(uri)
+
       response = http.post(uri, "request=#{URI.encode(request)}")
-      body     = YAML.load(decode(response.body))
-      pp(body)
+      puts "raw response : #{response.body}"
+      body = JSON.parse(response.body)
+      puts "json: #{body}"
     end
 
     @indicator.stopAnimation(self)
@@ -212,12 +225,5 @@ class AppController < OSX::NSObject
     @status.setStringValue("")
     @bookMsg.setStringValue("")
     @message.setStringValue("")
-  end
-  
-  # decode japanese charactor code
-  def decode(str)
-    return str.gsub(/(\\u[A-Fa-f0-9]{4})+/) { |chars|
-      NKF.nkf("-W16B -w80", chars.scan(/\\u([A-Fa-f0-9]{4})/).map { |char,| char.hex }.pack("n*"))
-    }
   end
 end
